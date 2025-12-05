@@ -1,0 +1,38 @@
+<div *ngIf="bicicleta; else sinDatos">
+  <h1>Bicicleta registrada correctamente 🎉</h1>
+
+  <section style="border: 2px solid #333; padding: 12px; margin-top: 12px;">
+    <h2>Ubicación de la bicicleta</h2>
+
+    <p>
+      <strong>Campus:</strong>
+      {{ bicicleta.campus || bicicleta.campusNombre || 'No informado' }}
+    </p>
+
+    <p>
+      <strong>Estacionamiento:</strong>
+      {{ bicicleta.estacionamiento || bicicleta.estacionamientoNombre || 'No informado' }}
+    </p>
+  </section>
+
+  <section style="margin-top: 16px;">
+    <h3>Datos de la bicicleta</h3>
+    <ul>
+      <li><strong>ID / Identificador:</strong> {{ bicicleta._id || bicicleta.id || bicicleta.identificador }}</li>
+      <li><strong>Marca:</strong> {{ bicicleta.marca }}</li>
+      <li><strong>Modelo:</strong> {{ bicicleta.modelo }}</li>
+      <li><strong>Color:</strong> {{ bicicleta.color }}</li>
+      <li><strong>RUT Estudiante:</strong> {{ bicicleta.rut || bicicleta.rutEstudiante }}</li>
+      <li><strong>Fecha registro:</strong> {{ bicicleta.fechaRegistro | date:'short' }}</li>
+    </ul>
+  </section>
+
+  <button (click)="volverInicio()" style="margin-top: 16px;">
+    Volver al inicio
+  </button>
+</div>
+
+<ng-template #sinDatos>
+  <p>No se encontraron datos de la bicicleta registrada.</p>
+  <button (click)="volverInicio()">Volver al inicio</button>
+</ng-template>

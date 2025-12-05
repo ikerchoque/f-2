@@ -1,0 +1,49 @@
+<h2>Registrar Bici en este Estacionamiento</h2>
+
+<form [formGroup]="form" (ngSubmit)="registrarBici()">
+  <div>
+    <label>Identificador</label><br>
+    <input type="text" formControlName="identificador">
+  </div>
+
+  <div style="margin-top: 8px;">
+    <label>Estacionamiento</label><br>
+    <input type="text" formControlName="estacionamiento">
+  </div>
+
+  <div style="margin-top: 8px;">
+    <label>RUT Estudiante</label><br>
+    <input type="text" formControlName="rut">
+  </div>
+
+  <div style="margin-top: 8px;">
+    <label>Marca</label><br>
+    <input type="text" formControlName="marca">
+  </div>
+
+  <div style="margin-top: 8px;">
+    <label>Modelo</label><br>
+    <input type="text" formControlName="modelo">
+  </div>
+
+  <div style="margin-top: 8px;">
+    <label>Color</label><br>
+    <input type="text" formControlName="color">
+  </div>
+
+  <div style="margin-top: 12px;">
+    <button type="submit" [disabled]="form.invalid">
+      Registrar Bici
+    </button>
+  </div>
+</form>
+
+<hr>
+
+<h3>Bicicletas ya registradas en este estacionamiento</h3>
+
+<ul>
+  <li *ngFor="let bici of listaBicicletas">
+    <strong>{{ bici.marca }} {{ bici.modelo }}</strong> - {{ bici.color }}
+  </li>
+</ul>

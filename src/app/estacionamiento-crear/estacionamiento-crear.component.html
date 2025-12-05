@@ -1,0 +1,37 @@
+<div class="container mt-4">
+  <h3>{{ esEdicion ? 'Editar' : 'Crear' }} Estacionamiento</h3>
+  
+  <form (ngSubmit)="guardar()">
+    
+    <div class="mb-3">
+      <label class="form-label">Identificador</label>
+      <input type="text" class="form-control" 
+             [(ngModel)]="establecimiento.identificador" name="identificador" required placeholder="Ej: EST-001">
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Nombre</label>
+      <input type="text" class="form-control" 
+             [(ngModel)]="establecimiento.nombre" name="nombre" required placeholder="Ej: Estacionamiento Central">
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Dirección</label>
+      <input type="text" class="form-control" 
+             [(ngModel)]="establecimiento.direccion" name="direccion" required placeholder="Ej: Av. Principal 123">
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Capacidad</label>
+      <input type="number" class="form-control" 
+             [(ngModel)]="establecimiento.capacidad" name="capacidad" required>
+    </div>
+
+    <button type="submit" class="btn btn-success">Guardar</button>
+    
+    <button type="button" class="btn btn-secondary ms-2" routerLink="/estacionamiento/listar">
+      Cancelar
+    </button>
+
+  </form>
+</div>
