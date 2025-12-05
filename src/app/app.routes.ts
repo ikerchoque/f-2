@@ -12,9 +12,11 @@ import { BicicletaCrear } from './componentes/bicicleta-crear/bicicleta-crear';
 // --- NUEVOS COMPONENTES ---
 import { EstacionamientoListarComponent } from './estacionamiento-listar/estacionamiento-listar.component';
 import { EstacionamientoCrearComponent } from './estacionamiento-crear/estacionamiento-crear.component';
-
 import { BicicletaPorEstacionamientoComponent } from './bicicleta-por-estacionamiento/bicicleta-por-estacionamiento.component';
 import { BicicletaRegistradaComponent } from './bicicleta-registrada/bicicleta-registrada.component';
+
+// 👉 NUEVO COMPONENTE PARA LA EVF1_U3
+import { EstablecimientoListarBicicletasComponent } from './establecimiento-listar-bicicletas/establecimiento-listar-bicicletas.component';
 
 export const routes: Routes = [
   { path: '', component: Inicio },
@@ -36,6 +38,9 @@ export const routes: Routes = [
   // Confirmación
   { path: 'bicicleta-registrada', component: BicicletaRegistradaComponent },
 
-  // Ruta para QR con query params (opcional)
-  { path: 'registrar-bicicleta', component: BicicletaPorEstacionamientoComponent }
+  // Ruta para QR con query params
+  { path: 'registrar-bicicleta', component: BicicletaPorEstacionamientoComponent },
+
+  // 👉 NUEVA RUTA EXIGIDA POR LA PRUEBA EVF1_U3
+  { path: 'establecimiento-listar-bicicletas', component: EstablecimientoListarBicicletasComponent }
 ];

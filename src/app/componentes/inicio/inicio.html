@@ -4,10 +4,10 @@
   <h1 class="text-center mb-4">Panel de Control</h1>
   <p class="text-center text-muted mb-5">Selecciona la acción que deseas realizar</p>
 
-
   <!-- 🔵 OPCIONES SOLO PARA ADMIN -->
   <div *ngIf="esAdmin" class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
 
+    <!-- Buscar Estudiante -->
     <div class="col">
       <div class="card h-100 shadow-sm border-0 text-center hover-card">
         <div class="card-body d-flex flex-column justify-content-center align-items-center">
@@ -19,6 +19,7 @@
       </div>
     </div>
 
+    <!-- Buscar Bicicletas -->
     <div class="col">
       <div class="card h-100 shadow-sm border-0 text-center hover-card">
         <div class="card-body d-flex flex-column justify-content-center align-items-center">
@@ -30,56 +31,96 @@
       </div>
     </div>
 
+    <!-- Listado Estudiantes -->
     <div class="col">
       <div class="card h-100 shadow-sm border-0 text-center hover-card">
         <div class="card-body d-flex flex-column justify-content-center align-items-center">
           <i class="bi bi-people fs-1 mb-3 text-warning"></i>
           <h5 class="card-title">Listado de Estudiantes</h5>
           <p class="card-text text-muted">Revisa todos los estudiantes registrados en el sistema.</p>
-          <a routerLink="/estudiante-listar" class="btn btn-warning mt-auto text-dark">Ir <i class="bi bi-arrow-right"></i></a>
+          <a routerLink="/estudiante-listar" class="btn btn-warning mt-auto text-dark">
+            Ir <i class="bi bi-arrow-right"></i>
+          </a>
         </div>
       </div>
     </div>
 
+    <!-- Registrar Estudiante -->
+    <div class="col">
+      <div class="card h-100 shadow-sm border-0 text-center hover-card">
+        <div class="card-body d-flex flex-column justify-content-center align-items-center">
+          <i class="bi bi-person-plus fs-1 mb-3 text-primary"></i>
+          <h5 class="card-title">Registrar Estudiante</h5>
+          <p class="card-text text-muted">Crea un nuevo estudiante en el sistema.</p>
+          <a routerLink="/estudiante-crear" class="btn btn-primary mt-auto">
+            Ir <i class="bi bi-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Registrar Bici -->
     <div class="col">
       <div class="card h-100 shadow-sm border-0 text-center hover-card">
         <div class="card-body d-flex flex-column justify-content-center align-items-center">
           <i class="bi bi-people fs-1 mb-3 text-success"></i>
           <h5 class="card-title">Registrar Bici</h5>
           <p class="card-text text-muted">Registra una bicicleta en el establecimiento.</p>
-          <a routerLink="/bicicleta-crear" class="btn btn-success mt-auto">Ir <i class="bi bi-arrow-right"></i></a>
+          <a routerLink="/bicicleta-crear" class="btn btn-success mt-auto">
+            Ir <i class="bi bi-arrow-right"></i>
+          </a>
         </div>
       </div>
     </div>
 
+    <!-- Listado Bicicleta -->
     <div class="col">
       <div class="card h-100 shadow-sm border-0 text-center hover-card">
         <div class="card-body d-flex flex-column justify-content-center align-items-center">
           <i class="bi bi-people fs-1 mb-3 text-warning"></i>
           <h5 class="card-title">Listado de Bicicleta</h5>
           <p class="card-text text-muted">Revisa todas las bicicletas registradas en el sistema.</p>
-          <a routerLink="/bicicleta-listar" class="btn btn-warning mt-auto text-dark">Ir <i class="bi bi-arrow-right"></i></a>
+          <a routerLink="/bicicleta-listar" class="btn btn-warning mt-auto text-dark">
+            Ir <i class="bi bi-arrow-right"></i>
+          </a>
         </div>
       </div>
     </div>
 
+    <!-- Gestión Estacionamientos -->
     <div class="col">
       <div class="card h-100 shadow-sm border-0 text-center hover-card">
         <div class="card-body d-flex flex-column justify-content-center align-items-center">
           <i class="bi bi-building fs-1 mb-3 text-info"></i>
           <h5 class="card-title">Gestión Estacionamientos</h5>
           <p class="card-text text-muted">Administra los establecimientos y ve sus bicicletas.</p>
-          <a routerLink="/estacionamiento/listar" class="btn btn-info mt-auto text-white">Ir <i class="bi bi-arrow-right"></i></a>
+          <a routerLink="/estacionamiento/listar" class="btn btn-info mt-auto text-white">
+            Ir <i class="bi bi-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 🚲 NUEVA TARJETA: Bicicletas por Establecimiento -->
+    <div class="col">
+      <div class="card h-100 shadow-sm border-0 text-center hover-card">
+        <div class="card-body d-flex flex-column justify-content-center align-items-center">
+          <i class="bi bi-building-check fs-1 mb-3 text-info"></i>
+          <h5 class="card-title">Bicicletas por Establecimiento</h5>
+          <p class="card-text text-muted">
+            Consulta las bicicletas registradas en un establecimiento por fecha.
+          </p>
+          <a routerLink="/establecimiento-listar-bicicletas" class="btn btn-info mt-auto text-white">
+            Ir <i class="bi bi-arrow-right"></i>
+          </a>
         </div>
       </div>
     </div>
 
   </div>
 
-
   <!-- 🟢 OPCIÓN SOLO PARA ESTUDIANTE -->
   <div *ngIf="esEstudiante" class="row justify-content-center mt-5">
-
     <div class="col-12 col-md-6">
       <div class="card h-100 shadow-sm border-0 text-center hover-card">
         <div class="card-body d-flex flex-column justify-content-center align-items-center">
@@ -89,7 +130,6 @@
         </div>
       </div>
     </div>
-
   </div>
 
 </div>

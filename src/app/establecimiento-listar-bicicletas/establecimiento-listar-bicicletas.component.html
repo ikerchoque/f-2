@@ -1,0 +1,117 @@
+
+<div class="container mt-4">
+  <h2 class="mb-3">Bicicletas por establecimiento</h2>
+  <p class="text-muted">
+    Consulta las bicicletas registradas en un establecimiento por fecha o por la fecha de hoy.
+  </p>
+
+  <!-- FILTROS -->
+  <div class="card mb-3">
+    <div class="card-body row g-3 align-items-end">
+      <div class="col-md-4">
+        <label class="form-label">ID Establecimiento (_id)</label>
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="establecimientoId"
+          placeholder="Pega aquí el _id del establecimiento"
+        />
+      </div>
+
+      <div class="col-md-3">
+        <label class="form-label">Fecha</label>
+        <input
+          type="date"
+          class="form-control"
+          [(ngModel)]="fechaSeleccionada"
+        />
+      </div>
+
+      <div class="col-md-2 d-flex">
+        <button class="btn btn-primary w-100" (click)="buscarPorFecha()">
+          Buscar por fecha
+        </button>
+      </div>
+
+      <div class="col-md-3 d-flex">
+        <button class="btn btn-success w-100" (click)="buscarHoy()">
+          Buscar fecha de hoy
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ESTADOS -->
+  <div *ngIf="cargando" class="alert alert-info">Cargando información...</div>
+  <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+  <div *ngIf="mensajeSinBicicletas" class="alert alert-warning">
+    {{ mensajeSinBicicletas }}
+  </div>
+
+  <!-- INFORMACIÓN BÁSICA DEL ESTABLECIMIENTO (ID + estacionamiento del primer registro) -->
+  <div *ngIf="bicicletas.length" class="card mb-3">
+    <div class="card-header">Información del establecimiento</div>
+    <div class="card-body">
+      <p><strong>ID Establecimiento (_id):</strong> {{ establecimientoId }}</p>
+      <p>
+        <strong>Código estacionamiento (según la bicicleta):</strong>
+        {{ bicicletas[0]?.estacionamiento }}
+      </p>
+    </div>
+  </div>
+
+  <!-- LISTADO DE ESTUDIANTES -->
+  <div *ngIf="estudiantes.length">
+    <h4>Estudiantes</h4>
+    <div class="table-responsive mb-3">
+      <table class="table table-striped table-sm">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>RUT</th>
+            <th>Correo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let est of estudiantes">
+            <td>{{ est.nombre }} {{ est.apellido }}</td>
+            <td>{{ est.rut }}</td>
+            <td>{{ est.correo || '-' }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- LISTADO DE BICICLETAS -->
+  <div *ngIf="bicicletas.length">
+    <h4>Bicicletas</h4>
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover table-sm">
+        <thead class="table-light">
+          <tr>
+            <th>Marca</th>
+            <th>Modelo</th>
+            <th>Color</th>
+            <th>Estacionamiento</th>
+            <th>Fecha registro</th>
+            <th>Estudiante</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let bici of bicicletas">
+            <td>{{ bici.marca }}</td>
+            <td>{{ bici.modelo }}</td>
+            <td>{{ bici.color }}</td>
+            <td>{{ bici.estacionamiento }}</td>
+            <td>{{ bici.fechaRegistro | date: 'yyyy-MM-dd HH:mm' }}</td>
+            <td>
+              {{ bici.estudiante?.nombre }} {{ bici.estudiante?.apellido }}
+              ({{ bici.estudiante?.rut }})
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
